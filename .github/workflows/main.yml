@@ -35,11 +35,11 @@ jobs:
       - name: ls github_workspace
         run: echo $(ls $GITHUB_WORKSPACE)
 
-      - uses: actions/checkout@v2
-        if: github.event.client_payload.branch != ''
-        with:
-          ref: ${{ github.event.client_payload.branch }}
-      - uses: actions/checkout@v2
-        if: github.event.client_payload.branch == ''
+        #      - uses: actions/checkout@v2
+        #        if: github.event.client_payload.branch != ''
+        #        with:
+        #          ref: ${{ github.event.client_payload.branch }}
+        #      - uses: actions/checkout@v2
+        #        if: github.event.client_payload.branch == ''
       - name: ls github_workspace
         run: echo $(ls $GITHUB_WORKSPACE)
