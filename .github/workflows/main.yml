@@ -1,14 +1,14 @@
 name: テスト
 
 on:
-  # push:
+  push:
   # repository_dispatch:
     # repository_dispatch:
     # retypes: [deploy]
   # release:
   # types: [published]
-  release:
-    types: [created]
+  # release:
+  #   types: [created]
 
 jobs:
   dep:
@@ -16,30 +16,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Echo payload
-      run: echo ${{ github.event.client_payload.branch }}
+      - name: スクリプト
+        run: echo Hello, world!
+      - name: Echo payload
+        run: echo ${{ github.event.client_payload.branch }}
 
-    - name: Echo present payload
-      if: github.event.client_payload.branch != ''
-      run: echo Present
+      - name: Echo present payload
+        if: github.event.client_payload.branch != ''
+        run: echo Present
 
-    - name: Echo empty payload
-      if: github.event.client_payload.branch == ''
-      run: echo Empty
+      - name: Echo empty payload
+        if: github.event.client_payload.branch == ''
+        run: echo Empty
 
-    - name: echo github_workspace
-      run: echo $GITHUB_WORKSPACE
+      - name: echo github_workspace
+        run: echo $GITHUB_WORKSPACE
 
-    - name: ls github_workspace
-      run: echo $(ls $GITHUB_WORKSPACE)
+      - name: ls github_workspace
+        run: echo $(ls $GITHUB_WORKSPACE)
 
-    - uses: actions/checkout@v2
-      if: github.event.client_payload.branch != ''
-      with:
-        ref: ${{ github.event.client_payload.branch }}
-    - uses: actions/checkout@v2
-      if: github.event.client_payload.branch == ''
-    - name: ls github_workspace
-      run: echo $(ls $GITHUB_WORKSPACE)
+      - uses: actions/checkout@v2
+        if: github.event.client_payload.branch != ''
+        with:
+          ref: ${{ github.event.client_payload.branch }}
+      - uses: actions/checkout@v2
+        if: github.event.client_payload.branch == ''
+      - name: ls github_workspace
+        run: echo $(ls $GITHUB_WORKSPACE)
