@@ -5,8 +5,10 @@ on:
   # repository_dispatch:
     # repository_dispatch:
     # retypes: [deploy]
+  # release:
+  # types: [published]
   release:
-    types: [published]
+    types: [created]
 
 jobs:
   dep:
